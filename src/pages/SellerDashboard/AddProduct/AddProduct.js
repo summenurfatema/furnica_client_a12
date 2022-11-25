@@ -26,7 +26,7 @@ const AddProduct = () => {
 
         const addProduct = {
             furniture: productName,
-
+            email,
             actual_price: actualPrice,
             resale_price: resalePrice,
             condition,
