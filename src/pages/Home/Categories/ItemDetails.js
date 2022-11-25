@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const ItemDetails = ({ product, setItem }) => {
     const { img, actual_price, availablity, condition,
-        description, furniture, location, published_date, resale_price } = product;
+        description, furniture, location, published_date, resale_price, sellerName, phone } = product;
 
     const handleWish = () => {
 
@@ -42,14 +42,20 @@ const ItemDetails = ({ product, setItem }) => {
                 <h2 className="card-title text-xl">{furniture}</h2>
                 <p>{description}</p>
                 <p></p>
-                <p>Product Info : </p>
+                <p className='text-semibold font-xl'>Product Info : </p>
                 <ul>
                     <li>Actual Price : {actual_price} BDT/=</li>
                     <li>Resale Price{resale_price} BDT/=</li>
                     <li>Condition :  {condition}</li>
                     <li>Published Date : {published_date}</li>
-                    <li>Location : {location}</li>
                     <li>Availablity: {availablity}</li>
+                </ul>
+                <p className='text-semibold font-xl'>Seller Information :</p>
+                <ul>
+                    <li>Seller name :{sellerName}</li>
+                    <li>Phone :{phone}</li>
+                    <li>Location : {location}</li>
+
                 </ul>
                 <div className="card-actions justify-end">
                     <div onClick={handleWish} className="badge badge-outline">Add to Wish-list</div>

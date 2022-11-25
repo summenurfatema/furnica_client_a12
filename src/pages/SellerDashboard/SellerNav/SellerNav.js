@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
 
-const Navber = () => {
+const SellerNav = () => {
     const { user } = useContext(AuthContext)
 
     const { logOut } = useContext(AuthContext);
@@ -11,26 +11,23 @@ const Navber = () => {
 
 
     const menuList = <>
-        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/dashboard'>Home</Link></li>
 
         {
             user?.email ?
+
+
+                <li onClick={logOut}><Link>Sign Out</Link></li>
+                :
                 <>
                     <li><Link to='/login'>Login</Link></li>
-                    <li onClick={logOut}><Link>Sign Out</Link></li>
+                    <li><Link to='/signup'>Sign Up</Link></li>
                 </>
-
-                :
-                <li><Link to='/signup'>Sign Up</Link></li>
 
         }
 
-
-
-
-
-        <li><Link to='/bookings'>My Order</Link></li>
-        <li><Link to='/wishlists'>Wish List</Link></li>
+        <li><Link to='/dashboard/Seller/addproduct'>Add Product</Link></li>
+        <li><Link to='/dashboard/Seller/myproduct'>My Product</Link></li>
 
     </>
 
@@ -60,4 +57,4 @@ const Navber = () => {
     );
 };
 
-export default Navber;
+export default SellerNav;
