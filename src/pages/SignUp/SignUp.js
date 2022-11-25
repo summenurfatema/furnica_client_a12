@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/UserContext';
 
 const SignUp = () => {
-    const { createUser, updateUser } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const handleSignup = event => {
         event.preventDefault()
         const form = event.target
@@ -18,22 +18,24 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user
 
-                const userInfo = {
-                    displayName: name,
-                    email: email
-                }
-                updateUser(userInfo)
-                    .then(() => {
+                // const userInfo = {
+                //     displayName: name,
+                //     email: email
+                // }
+                // updateUser(userInfo)
+                //     .then(() => {
 
-                        // saveUser(user.displayName, user.email)
+                //         // saveUser(user.displayName, user.email)
 
-                    })
-                    .catch(error => console.error(error))
+                //     })
+                //     .catch(error => console.error(error))
                 console.log(user)
                 return alert('Account created successfully')
 
             })
             .then(err => console.error(err))
+
+
 
     }
     return (
