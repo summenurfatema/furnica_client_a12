@@ -1,11 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import SellerNav from '../pages/SellerDashboard/SellerNav/SellerNav';
+import Navber from '../pages/share/Navber/Navber';
 
 const SellerDashBoardLayout = () => {
     return (
         <div>
-            <SellerNav></SellerNav>
+            <Navber></Navber>
             <Outlet></Outlet>
         </div>
     );

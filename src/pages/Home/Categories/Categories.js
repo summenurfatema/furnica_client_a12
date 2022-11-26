@@ -1,8 +1,8 @@
 import React from 'react';
-import bed from '../../../assets/images/category/bed.png'
-import chair from '../../../assets/images/category/chair.png'
-import sofa from '../../../assets/images/category/sofa.png'
-import clothStand from '../../../assets/images/category/cloth-stand.png'
+import bed from '../../../assets/category/bed2.png'
+import chair from '../../../assets/category/chair1.png'
+import sofa from '../../../assets/category/bed1.png'
+import clothStand from '../../../assets/category/stand.png'
 import CategoryCard from './CategoryCard';
 
 const Categories = () => {
@@ -33,7 +33,8 @@ const Categories = () => {
         },
     ]
     return (
-        <div className='space-y-5 rounded-md'>
+        <div className='space-y-7 rounded-md'>
+            <h1 className='text-2xl  text-center font-semibold my-3'>Categories</h1>
             {
                 categories.map(items => <CategoryCard
                     key={items.id}

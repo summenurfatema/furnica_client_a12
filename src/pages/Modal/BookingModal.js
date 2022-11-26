@@ -56,7 +56,6 @@ const BookingModal = ({ item }) => {
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    {/* <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label> */}
                     <h3 className="text-2xl font-bold">Booking Informafation of {item?.furniture} !!!</h3>
 
                     <form onSubmit={handleBooking} className='my-7 space-y-3'>
@@ -64,35 +63,35 @@ const BookingModal = ({ item }) => {
 
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Buyer's name :</label>
-                            <input name='buyername' type="text" defaultValue={user?.displayName} className="input input-bordered w-full max-w-xs block" />
+                            <input name='buyername' type="text" value={user?.displayName} readOnly className="input input-bordered w-full max-w-xs block" />
                         </div>
 
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Buyer's email :</label>
-                            <input name='buyeremail' type="text" defaultValue={user?.email} className="input input-bordered w-full max-w-xs block" />
+                            <input name='buyeremail' type="text" value={user?.email} readOnly className="input input-bordered w-full max-w-xs block" />
                         </div>
 
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Product name :</label>
-                            <input name='productname' type="text" defaultValue={item?.furniture} className="input input-bordered w-full max-w-xs block" />
+                            <input name='productname' type="text" value={item?.furniture} readOnly className="input input-bordered w-full max-w-xs block" />
                         </div>
 
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Product price :</label>
-                            <input name='productprice' type="text" defaultValue={item?.resale_price} className="input input-bordered w-full max-w-xs block" />
+                            <input name='productprice' type="text" value={item?.resale_price} readOnly className="input input-bordered w-full max-w-xs block" />
                         </div>
 
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Phone number :</label>
-                            <input name='phone' type="text" className="input input-bordered w-full max-w-xs block" />
+                            <input name='phone' type="text" placeholder='01XXXXXXXXX' className="input input-bordered w-full max-w-xs block" />
                         </div>
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Meeting Location :</label>
                             <input name='location' type="text" className="input input-bordered w-full max-w-xs block" />
                         </div>
                         <div className="modal-action">
-                            <button type='submit' className='btn '>Submit</button>
-                            <label htmlFor="my-modal-3" className="btn">Cancel</label>
+                            <button type='submit' className='btn '>Confirm</button>
+                            <label htmlFor="my-modal-3" className="btn">Close</label>
                         </div>
 
                     </form>

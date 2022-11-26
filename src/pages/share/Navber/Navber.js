@@ -1,36 +1,60 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
+import useBuyer from '../../hooks/useSeller';
+import useSeller from '../../hooks/useSeller';
+import logo from '.././../../assets/images/logo.png'
 
 const Navber = () => {
     const { user } = useContext(AuthContext)
 
     const { logOut } = useContext(AuthContext);
-
-
-
+    const [isSeller] = useSeller(user?.email)
+    //const [isBuyer] = useBuyer(user?.email)
 
     const menuList = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/login'>Login</Link></li>
 
         {
             user?.email ?
                 <>
-                    <li><Link to='/login'>Login</Link></li>
                     <li onClick={logOut}><Link>Sign Out</Link></li>
                 </>
 
                 :
-                <li><Link to='/signup'>Sign Up</Link></li>
+                <>
+
+
+                    <li><Link to='/signup'>Sign Up</Link></li>
+                </>
 
         }
 
 
+        {
+            isSeller ?
+                <>
+
+                    <li><Link to='/seller/addproduct'>Add Product</Link></li>
+                    <li><Link to='/seller/myproduct'>My Product</Link></li>
+                    <li><Link to='/seller/advertise'>Advertisement</Link></li>
+                </>
+
+
+                :
+
+
+                <>
+
+                    <li><Link to='/bookings'>My Order</Link></li>
+                    <li><Link to='/wishlists'>Wish List</Link></li>
+
+                </>
+        }
 
 
 
-        <li><Link to='/bookings'>My Order</Link></li>
-        <li><Link to='/wishlists'>Wish List</Link></li>
 
     </>
 
@@ -48,7 +72,13 @@ const Navber = () => {
                         {menuList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl" href='/'>Furnica</a>
+                <div className="avatar">
+                    <div className="w-16 rounded">
+                        <img src={logo} alt="" />
+                    </div>
+                    <a className="btn btn-ghost normal-case text-2xl font-bold pt-5" href='/'>Furnica</a>
+
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

@@ -12,6 +12,8 @@ const CategoryItems = () => {
 
     return (
         <div className='grid grid-cols-1 gap-5'>
+
+
             {
                 products.map(product => <ItemDetails
                     key={product._id}

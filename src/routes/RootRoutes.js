@@ -2,7 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main/Main";
 import SellerDashBoardLayout from "../layouts/SellerDashBoardLayout";
 
-import AllItems from "../pages/AllItems/AllItems";
+
+import Error from "../pages/Error/Error";
+import MyAdvertise from "../pages/Home/Advertisement/MyAdvertise";
 
 import CategoryItems from "../pages/Home/Categories/CategoryItems";
 import Home from "../pages/Home/Home";
@@ -14,9 +16,11 @@ import SellerDashboard from "../pages/SellerDashboard/SellerDashboard";
 
 import SignUp from "../pages/SignUp/SignUp";
 import WishList from "../pages/WishList/WishList";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
+
         path: '/',
         element: <Main></Main>,
 
@@ -35,17 +39,14 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
-            {
-                path: '/furnitures',
-                element: <AllItems></AllItems>
-            },
+
             {
                 path: '/bookings',
                 element: <MyOrders></MyOrders>
             },
             {
                 path: '/furnitures/:category',
-                element: <CategoryItems></CategoryItems>,
+                element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
 
                 loader: ({ params }) => fetch(`http://localhost:5000/furnitures/${params.category}`)
             },
@@ -54,28 +55,40 @@ const router = createBrowserRouter([
                 element: <WishList></WishList>
             }
 
+
         ]
     },
     {
-        path: '/dashboard',
+        path: '/seller',
         element: <SellerDashBoardLayout></SellerDashBoardLayout>,
         children: [
             {
-                path: '/dashboard/Seller',
+                path: '/seller',
                 element: <SellerDashboard></SellerDashboard>
 
 
             },
             {
-                path: '/dashboard/Seller/addproduct',
+                path: '/seller/addproduct',
                 element: <AddProduct></AddProduct>
             },
             {
-                path: '/dashboard/Seller/myproduct',
+                path: '/seller/myproduct',
                 element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/seller/advertise',
+                element: <MyAdvertise></MyAdvertise>
             }
 
         ]
-    }
+
+    },
+
+    {
+        path: '*',
+        element: <Error></Error>
+    },
+
 ])
 export default router;

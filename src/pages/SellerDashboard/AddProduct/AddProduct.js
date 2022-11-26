@@ -4,6 +4,7 @@ import { AuthContext } from '../../../context/UserContext';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext)
+    const imgBbKey = process.env.REACT_APP_imgbb_key
 
     const handleBooking = event => {
         event.preventDefault()
@@ -12,6 +13,7 @@ const AddProduct = () => {
         const email = form.email.value
         const phone = form.phone.value
         const productName = form.productname.value
+        const img = form.productimg.files[0]
         const description = form.description.value
         const availability = form.availability.value
         const category = form.category.value
@@ -22,48 +24,62 @@ const AddProduct = () => {
         const actualPrice = form.actualprice.value
         const resalePrice = form.resaleprice.value
 
-        // console.log( email, phone, productName, description, availability, category, parchaseYear, publishedDate, location, condition)
 
-        const addProduct = {
-            furniture: productName,
-            email,
-            actual_price: actualPrice,
-            resale_price: resalePrice,
-            condition,
-            description,
-            purchase_year: parchaseYear,
-            published_date: publishedDate,
-            location,
-            availability,
-            category,
-            phone,
-            sellerName,
-
-        }
-        console.log(addProduct)
-
-        console.log(addProduct)
-        fetch('http://localhost:5000/furnitures', {
+        const formData = new FormData()
+        formData.append('image', img);
+        const url = `https://api.imgbb.com/1/upload?key=${imgBbKey}`
+        fetch(url, {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(addProduct)
+            body: formData
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    toast.success(`You have booked ${productName} successfully`)
+            .then(imgData => {
+                if (imgData.success) {
 
-                }
-                else {
-                    toast.danger('Error')
+                    // {"_id":{"$oid":"637eeab662731c7edf8da4fb"},"furniture":"Single Bed","img":"https://t4.ftcdn.net/jpg/02/43/45/31/240_F_243453155_GHrzx32T0tRz1sGcsCfYOSuIPHSOEBkL.jpg","actual_price":{"$numberInt":"10000"},"resale_price":{"$numberInt":"7000"},"condition":"Good","description":".................. ","purchase_year":{"$numberInt":"2018"},"published_date":{"$date":{"$numberLong":"1642723200000"}},"location":"Fatikchori,Chittagong","availablity":"Sold","category":"bed","phone":{"$numberLong":"167895433"},"sellerName":"Md. Tuhin","email":"web@gmail.com"}
+
+                    const addProduct = {
+                        furniture: productName,
+                        email,
+                        img: imgData.data.url,
+                        actual_price: actualPrice,
+                        resale_price: resalePrice,
+                        condition,
+                        description,
+                        purchase_year: parchaseYear,
+                        published_date: publishedDate,
+                        location,
+                        availability,
+                        category,
+                        phone,
+                        sellerName,
+
+                    }
+                    console.log(addProduct)
+
+                    console.log(addProduct)
+                    fetch('http://localhost:5000/furnitures', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(addProduct)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            if (data.acknowledged) {
+                                toast.success(`You have booked ${productName} successfully`)
+
+                            }
+                            else {
+                                toast.danger('Error')
+                            }
+                        })
+                        .catch(err => console.error(err))
+                    console.log(addProduct)
                 }
             })
-            .catch(err => console.error(err))
-        console.log(addProduct)
-
     }
 
     return (
@@ -77,17 +93,17 @@ const AddProduct = () => {
 
                     <div className="form-control">
                         <label className='font-semibold text-lg'  >Name :</label>
-                        <input name='name' type="text" value={user?.displayName} className="input input-bordered w-full max-w-xs block" />
+                        <input name='name' type="text" value={user?.displayName} readOnly className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Email :</label>
-                        <input value={user?.email} name='email' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input value={user?.email} readOnly name='email' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
 
 
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Phone :</label>
-                        <input name='phone' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input name='phone' type="text" placeholder='01XXXXXXXXX' className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Location :</label>
@@ -96,7 +112,7 @@ const AddProduct = () => {
 
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Product Image :</label>
-                        <input name='productimg' type="file" className="input input-bordered w-full max-w-xs block" />
+                        <input name='productimg' type="file" accept='image/*' className="input input-bordered w-full max-w-xs block" />
                     </div>
 
                     <div className="form-control">
@@ -116,7 +132,6 @@ const AddProduct = () => {
                             <option >bed</option>
                             <option >sofa</option>
                             <option >chair</option>
-
                             <option >cloth-stand</option>
                         </select>
 
@@ -157,7 +172,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Published date :</label>
-                        <input name='publisheddate' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input name='publisheddate' placeholder='YYYY-MM-DD' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
 
 

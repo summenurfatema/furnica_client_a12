@@ -1,31 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../../../context/UserContext';
-import MyProductCard from './MyProductCard';
+import { AuthContext } from '../../../context/UserContext';
+import MyAdvertiseCard from './MyAdvertiseCard';
 
-const MyProducts = () => {
+const MyAdvertise = () => {
     const { user } = useContext(AuthContext)
-    const [products, setProducts] = useState([])
+    const [advertises, setAdvertises] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/furnitures?email=${user?.email}`)
+        fetch(`http://localhost:5000/advertise?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                setProducts(data)
+                setAdvertises(data)
             })
     }, [user?.email])
 
 
     // delete product
-    const handleDelete = (product) => {
+    const handleDelete = (advertise) => {
         const agree = window.confirm('Are you sure to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/furnitures/${product._id}`, {
+            fetch(`http://localhost:5000/advertise/${advertise._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast('Product deleted !',
+                        toast('This item removed from Advertisement section successfully !',
                             {
                                 style: {
                                     borderRadius: '10px',
@@ -39,24 +39,6 @@ const MyProducts = () => {
                 })
         }
     }
-    //mark it sold
-    const handleUpdate = _id =>
-        fetch(`http://localhost:5000/furnitures/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    toast.success('Marked as Sold !!!')
-                    window.location.reload()
-                }
-            })
-
-
-
     return (
         <div className='flex flex-col items-center'>
             <div className="overflow-x-auto">
@@ -70,12 +52,11 @@ const MyProducts = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map(product =>
-                                <MyProductCard
-                                    product={product}
+                            advertises.map(advertise =>
+                                <MyAdvertiseCard
+                                    advertise={advertise}
                                     handleDelete={handleDelete}
-                                    handleUpdate={handleUpdate}
-                                ></MyProductCard>
+                                ></MyAdvertiseCard>
 
                             )}
                     </tbody>
@@ -83,8 +64,7 @@ const MyProducts = () => {
             </div>
 
         </div>
-
     );
 };
 
-export default MyProducts;
+export default MyAdvertise;
