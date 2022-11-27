@@ -8,11 +8,13 @@ import Categories from './Categories/Categories';
 const Home = () => {
     return (
         <div>
-            <div className='grid grid-cols-4 px-7'>
-                <div className='col-span-3'>
+            <div className='flex flex-col items-center justify-around md:flex-row'>
+                <div className=''>
                     <Banner></Banner>
                 </div >
-                <Categories></Categories>
+                <div>
+                    <Categories ></Categories>
+                </div>
             </div>
 
             <Advertisement></Advertisement>

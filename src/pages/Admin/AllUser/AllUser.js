@@ -5,11 +5,12 @@ import AllUserCard from './AllUserCard';
 const AllUser = () => {
     const [users, setUsers] = useState([])
 
+
     fetch('http://localhost:5000/users')
         .then(res => res.json())
         .then(data => {
             setUsers(data)
-            console.log(data)
+
         })
 
 
@@ -40,7 +41,7 @@ const AllUser = () => {
 
     }
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center w-96'>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
