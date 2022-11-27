@@ -4,6 +4,8 @@ import Main from "../layouts/Main/Main";
 import SellerDashBoardLayout from "../layouts/SellerDashBoardLayout";
 import AdminDashBoard from "../pages/Admin/AdminDashBoard/AdminDashBoard";
 import AdminHome from "../pages/Admin/AdminHome/AdminHome";
+import AllUser from "../pages/Admin/AllUser/AllUser";
+import ReportItem from "../pages/Admin/ReportItem/ReportItem";
 import SellerSection from "../pages/Admin/SellerSection/SellerSection";
 
 
@@ -85,6 +87,7 @@ const router = createBrowserRouter([
                 element: <MyAdvertise></MyAdvertise>
             }
 
+
         ]
 
     },
@@ -109,6 +112,14 @@ const router = createBrowserRouter([
             {
                 path: '/admin/sellersection',
                 element: <SellerSection></SellerSection>
+            },
+            {
+                path: '/admin/dashboard',
+                element: <AllUser></AllUser>
+            },
+            {
+                path: '/admin/reportitem',
+                element: <ReportItem></ReportItem>
             }
         ]
     }

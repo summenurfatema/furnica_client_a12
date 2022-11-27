@@ -40,7 +40,7 @@ const ItemDetails = ({ _id, product, setItem }) => {
             productName: furniture,
             productPrice: resale_price,
         }
-        fetch('http://localhost:5000/reportitem', {
+        fetch('http://localhost:5000/admin/reportitem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

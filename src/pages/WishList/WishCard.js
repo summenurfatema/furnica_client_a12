@@ -21,9 +21,6 @@ const WishCard = ({ wish, handleDelete }) => {
                 <button className="btn btn-sm">Add</button>
                 <button onClick={() => handleDelete(wish)} className="btn btn-sm">Delete</button>
             </td>
-
-
-
         </tr>
 
 
