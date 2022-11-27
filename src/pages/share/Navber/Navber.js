@@ -1,62 +1,70 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
-import useBuyer from '../../hooks/useSeller';
+import useAdmin from '../../hooks/useAdmin';
 import useSeller from '../../hooks/useSeller';
 import logo from '.././../../assets/images/logo.png'
 
 const Navber = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
 
-    const { logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email)
+
     const [isSeller] = useSeller(user?.email)
-    //const [isBuyer] = useBuyer(user?.email)
+
 
     const menuList = <>
+
+
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/login'>Login</Link></li>
 
         {
             user?.email ?
-                <>
-                    <li onClick={logOut}><Link>Sign Out</Link></li>
-                </>
-
+                <li onClick={logOut}><Link>Sign Out</Link></li>
                 :
-                <>
-
-
-                    <li><Link to='/signup'>Sign Up</Link></li>
-                </>
-
+                <li><Link to='/signup'>Sign Up</Link></li>
         }
-
 
         {
-            isSeller ?
+            isAdmin ?
                 <>
-
-                    <li><Link to='/seller/addproduct'>Add Product</Link></li>
-                    <li><Link to='/seller/myproduct'>My Product</Link></li>
-                    <li><Link to='/seller/advertise'>Advertisement</Link></li>
+                    <li><Link to='/admin/dashboard'>Dashboard</Link></li>
+                    <li><Link to='/admin/Seller'>All Seller</Link></li>
+                    <li><Link to='/admin/reportitem'>Reported Item</Link></li>
                 </>
-
 
                 :
 
-
                 <>
+                    {
+                        isSeller ?
+                            <>
+                                <li><Link to='/seller/addproduct'>Add Product</Link></li>
+                                <li><Link to='/seller/myproduct'>My Product</Link></li>
 
-                    <li><Link to='/bookings'>My Order</Link></li>
-                    <li><Link to='/wishlists'>Wish List</Link></li>
+                            </>
+
+                            :
+
+                            <>
+
+                                <li><Link to='/bookings'>My Order</Link></li>
+                                <li><Link to='/wishlists'>Wish List</Link></li>
+
+                            </>
+
+
+                    }
+
+
 
                 </>
+
         }
 
-
-
-
     </>
+
 
 
 

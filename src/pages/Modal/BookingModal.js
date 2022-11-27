@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/UserContext';
 
-const BookingModal = ({ item }) => {
+const BookingModal = ({ item, adver }) => {
     const { user } = useContext(AuthContext);
 
     const handleBooking = event => {

@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../context/UserContext';
+import useSeller from '../../hooks/useSeller';
+import BookingModal from '../../Modal/BookingModal';
 import AdvertisementCard from './AdvertisementCard';
 
 const Advertisement = () => {
-
+    const { user } = useContext(AuthContext)
+    const [isSeller] = useSeller(user?.email)
     const [ads, setAd] = useState([])
+    const [adver, setAdver] = useState({})
     useEffect(() => {
         fetch('http://localhost:5000/advertise')
             .then(res => res.json())
@@ -41,7 +46,13 @@ const Advertisement = () => {
 
     return (
         <div className='my-10'>
-            <h1 className='text-2xl text-center font-semibold my-3 mb-10'>Best product are there ...</h1>
+            {
+                isSeller ?
+                    <h1 className='text-2xl text-center font-semibold my-3 mb-10'> Your product's Advertisement is here...</h1>
+                    :
+                    <h1 className='text-2xl text-center font-semibold my-3 mb-10'>Here are the best collection of Furnica ...</h1>
+            }
+
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
 
@@ -50,8 +61,11 @@ const Advertisement = () => {
                     ads.map(ad => <AdvertisementCard
                         key={ad._id}
                         ad={ad}
-                        handleDelete={handleDelete}></AdvertisementCard>)
+                        handleDelete={handleDelete}
+                        setAdver={setAdver}></AdvertisementCard>)
                 }
+                <BookingModal
+                    adver={adver}></BookingModal>
             </div>
         </div>
     );

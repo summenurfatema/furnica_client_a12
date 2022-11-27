@@ -11,7 +11,16 @@ const SignUp = () => {
         const form = event.target
         const name = form.name.value
         const email = form.email.value
+        const role = form.role.value
         const password = form.password.value
+
+        const users = {
+            displayName: name,
+            email: email,
+            role: role
+
+
+        }
 
         console.log(name, email, password)
 
@@ -32,6 +41,20 @@ const SignUp = () => {
 
             })
             .then(err => console.error(err))
+
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(users)
+        })
+            .then(res => res.json())
+            .then((data) => {
+
+                console.log(data)
+            })
 
 
     }
@@ -58,6 +81,17 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="********" className="input input-bordered" />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Set your role</span>
+                            </label>
+                            <select name='role' className="select select-bordered select-md w-full max-w-xs">
+                                <option selected>Buyer</option>
+
+                                <option >Seller</option>
+                            </select>
 
                         </div>
 

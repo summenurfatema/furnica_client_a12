@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
 import useSeller from '../../hooks/useSeller';
 
-const AdvertisementCard = ({ ad, handleDelete }) => {
+const AdvertisementCard = ({ ad, handleDelete, setAdver }) => {
     const { user } = useContext(AuthContext)
     const { image, productName, category } = ad
     const [isSeller] = useSeller(user?.email)
@@ -14,10 +14,16 @@ const AdvertisementCard = ({ ad, handleDelete }) => {
                 <div className="">
                     <h2 className="text-center text-xl font-semibold my-4">{productName}</h2>
                 </div>
-                {isSeller &&
+                {isSeller ?
                     <Link>
                         <button onClick={() => handleDelete(ad)} className='btn btn-success w-full'>Remove</button>
                     </Link>
+                    :
+                    <div className="card-actions justify-end">
+
+                        <label onClick={() => setAdver(ad)} htmlFor="my-modal-3" className="btn btn-success w-full  mt-4">Order Now !</label>
+
+                    </div>
 
                 }
             </div>

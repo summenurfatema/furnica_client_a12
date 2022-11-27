@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminDashBoardLayout from "../layouts/AdminDashBoardLayout";
 import Main from "../layouts/Main/Main";
 import SellerDashBoardLayout from "../layouts/SellerDashBoardLayout";
+import AdminDashBoard from "../pages/Admin/AdminDashBoard/AdminDashBoard";
+import AdminHome from "../pages/Admin/AdminHome/AdminHome";
+import SellerSection from "../pages/Admin/SellerSection/SellerSection";
 
 
 import Error from "../pages/Error/Error";
@@ -89,6 +93,25 @@ const router = createBrowserRouter([
         path: '*',
         element: <Error></Error>
     },
+    {
+        path: '/admin',
+        element: <AdminDashBoardLayout></AdminDashBoardLayout>,
+        children: [
+            {
+                path: '/admin',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: '/admin/:role',
+                element: <AdminDashBoard></AdminDashBoard>,
+                loader: ({ params }) => fetch(`http://localhost:5000/admin/${params.role}`)
+            },
+            {
+                path: '/admin/sellersection',
+                element: <SellerSection></SellerSection>
+            }
+        ]
+    }
 
 ])
 export default router;

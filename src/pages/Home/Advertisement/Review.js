@@ -43,7 +43,7 @@ const Review = () => {
                         alt="Person"
                     />
                     <div className="flex flex-col justify-center mt-2">
-                        <p className="text-lg font-bold">Mohammad Arif</p>
+                        <p className="text-lg font-bold">Ayesha Rahman</p>
 
                         <p className="text-sm tracking-wide text-gray-800">
                             The whole progress from start to end was very easy.Easy to order,pay and communication.

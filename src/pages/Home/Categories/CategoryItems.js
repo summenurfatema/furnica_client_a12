@@ -10,7 +10,7 @@ const CategoryItems = () => {
     const products = useLoaderData()
     const [item, setItem] = useState({})
 
-    return (
+    return (<div>
         <div className='grid grid-cols-1 gap-5'>
 
 
@@ -25,6 +25,13 @@ const CategoryItems = () => {
             ></BookingModal>
 
         </div>
+
+
+
+
+    </div>
+
+
     );
 };
 

@@ -18,18 +18,17 @@ const Login = () => {
         const name1 = user?.name
         const email = form.email.value
         const password = form.password.value
-        const role = form.role.value
         console.log('dis', name)
         console.log('name1', name1)
 
 
-        const users = {
-            displayName: name,
-            email: email,
-            role: role
+        // const users = {
+        //     displayName: name,
+        //     email: email,
+        //     role: role
 
 
-        }
+        // }
 
 
 
@@ -48,18 +47,18 @@ const Login = () => {
 
 
 
-        fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(users)
-        })
-            .then(res => res.json())
-            .then((data) => {
+        // fetch('http://localhost:5000/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(users)
+        // })
+        //     .then(res => res.json())
+        //     .then((data) => {
 
-                console.log(data)
-            })
+        //         console.log(data)
+        //     })
 
 
     }
@@ -84,6 +83,8 @@ const Login = () => {
 
     //             console.log(data)
     //         })
+
+
     // }
 
     return (
@@ -109,17 +110,7 @@ const Login = () => {
                             <a href="k" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Set your role</span>
-                        </label>
-                        <select name='role' className="select select-bordered select-md w-full max-w-xs">
-                            <option selected>Buyer</option>
 
-                            <option >Seller</option>
-                        </select>
-
-                    </div>
                     <div className="form-control mt-6">
                         <button className="btn bg-cyan-600 btn-primary">Login</button>
                     </div>
@@ -127,7 +118,7 @@ const Login = () => {
                 </form>
                 <div className="divider">OR</div>
                 <div className='pb-7'>
-                    <button onClick={handleGoogleSignIn} className='btn outline-none bg-cyan-600 w-4/5 ml-10'>Sign in with Google</button>
+                    <button className='btn outline-none bg-cyan-600 w-4/5 ml-10'>Sign in with Google</button>
                 </div>
             </div>
         </div>
