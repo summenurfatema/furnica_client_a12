@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { saveSettings, settings } from 'react-hot-toast'
 import { AuthContext } from '../../context/UserContext';
+import useTitle from '../hooks/useTitle';
 import OrderCard from './OrderCard';
 
 const MyOrders = () => {
@@ -9,7 +10,7 @@ const MyOrders = () => {
     const [bookings, setBookings] = useState([])
 
 
-
+    useTitle('My Orders-Furnica')
 
     useEffect(() => {
         fetch(`http://localhost:5000/bookings?email=${user?.email}`)

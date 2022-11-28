@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import WishCard from './WishCard';
 import { toast } from 'react-hot-toast';
+import useTitle from '../hooks/useTitle';
 
 const WishList = () => {
+
+    useTitle('Wish List-Furnica')
+
     const [wishes, setWishes] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/wishlists')

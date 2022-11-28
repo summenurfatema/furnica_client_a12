@@ -3,8 +3,12 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
+import useTitle from '../hooks/useTitle';
 
 const Login = () => {
+
+    useTitle('Login-Furnica')
+
     const { signIn, user, google } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
@@ -51,7 +55,7 @@ const Login = () => {
     }
 
     return (
-        <div className='flex flex-col justify-center items-center'>
+        <div className='flex flex-col justify-center items-center mb-7'>
             <div className="text-center">
                 <h1 className="text-5xl font-bold my-10">Login now!</h1>
 
@@ -75,7 +79,7 @@ const Login = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button className="btn bg-cyan-600 btn-primary">Login</button>
+                        <button className="btn outline-none bg-cyan-600 ">Login</button>
                     </div>
                     <p>New to Furnica ? <Link to='/signup'>Sign Up</Link></p>
                 </form>

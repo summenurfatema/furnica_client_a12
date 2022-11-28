@@ -2,8 +2,11 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast'
 import { AuthContext } from '../../context/UserContext';
+import useTitle from '../hooks/useTitle';
 
 const SignUp = () => {
+    useTitle('Sign up-Furnica')
+
     const { createUser, updateUser } = useContext(AuthContext)
 
     const handleSignup = event => {
