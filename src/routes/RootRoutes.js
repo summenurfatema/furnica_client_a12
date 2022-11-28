@@ -8,6 +8,7 @@ import AllBuyer from "../pages/Admin/AllBuyer/AllBuyer";
 import AllUser from "../pages/Admin/AllUser/AllUser";
 import ReportItem from "../pages/Admin/ReportItem/ReportItem";
 import SellerSection from "../pages/Admin/SellerSection/SellerSection";
+import Blog from "../pages/Blog/Blog";
 
 
 import Error from "../pages/Error/Error";
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             {
                 path: '/wishlists',
                 element: <WishList></WishList>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
 
 
