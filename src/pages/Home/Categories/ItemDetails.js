@@ -76,7 +76,9 @@ const ItemDetails = ({ _id, product, setItem }) => {
                         <li>Resale Price{resale_price} BDT/=</li>
                         <li>Condition :  {condition}</li>
                         <li>Published Date : {published_date}</li>
+
                         <li>Availablity: {availablity}</li>
+
                     </ul>
                     <p className='font-bold text-xl'>Seller Information :</p>
                     <ul>
@@ -89,14 +91,22 @@ const ItemDetails = ({ _id, product, setItem }) => {
 
                     </ul>
                     <div className="card-actions justify-end my-3">
-                        <div onClick={handleWish} className="badge badge-outline"><FaRegHeart className='mr-2' />
+                        <div onClick={handleWish} className="badge badge-outline cursor-pointer"><FaRegHeart className='mr-2' />
                             Add to Wish-list</div>
-                        <div onClick={handleReportItem} className="badge badge-outline"><FaRegThumbsDown className='mr-2' /> Report this item</div>
+                        <div onClick={handleReportItem} className="badge badge-outline cursor-pointer"><FaRegThumbsDown className='mr-2' /> Report this item</div>
                     </div>
 
                     <div className="card-actions justify-end">
 
-                        <label onClick={() => setItem(product)} htmlFor="my-modal-3" className="btn bg-green-700 mt-4">Order Now !</label>
+
+                        {availablity === 'Unsold' ?
+                            <label onClick={() => setItem(product)} htmlFor="my-modal-3" className="btn bg-green-700 mt-4">Order Now !</label>
+
+                            :
+
+                            <label className="btn bg-green-700 mt-4">Sold out</label>
+
+                        }
 
                     </div>
                 </div>
