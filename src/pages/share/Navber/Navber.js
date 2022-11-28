@@ -16,22 +16,16 @@ const Navber = () => {
     const menuList = <>
 
 
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        <li className='font-semibold'><Link to='/'>Home</Link></li>
+        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
 
-        {
-            user?.email ?
-                <li onClick={logOut}><Link>Sign Out</Link></li>
-                :
-                <li><Link to='/signup'>Sign Up</Link></li>
-        }
 
         {
             isAdmin ?
                 <>
-                    <li><Link to='/admin/dashboard'>Dashboard</Link></li>
-                    <li><Link to='/admin/Seller'>All Seller</Link></li>
-                    <li><Link to='/admin/reportitem'>Reported Item</Link></li>
+                    <li className='font-semibold'><Link to='/admin/dashboard'>Dashboard</Link></li>
+                    <li className='font-semibold'><Link to='/admin/Seller'>All Seller</Link></li>
+                    <li className='font-semibold'><Link to='/admin/reportitem'>Reported Item</Link></li>
                 </>
 
                 :
@@ -40,34 +34,34 @@ const Navber = () => {
                     {
                         isSeller ?
                             <>
-                                <li><Link to='/seller/addproduct'>Add Product</Link></li>
-                                <li><Link to='/seller/myproduct'>My Product</Link></li>
+                                <li className='font-semibold'><Link to='/seller/addproduct'>Add Product</Link></li>
+                                <li className='font-semibold'><Link to='/seller/myproduct'>My Product</Link></li>
 
                             </>
 
                             :
 
                             <>
-
-                                <li><Link to='/bookings'>My Order</Link></li>
-                                <li><Link to='/wishlists'>Wish List</Link></li>
-
+                                <li className='font-semibold'><Link to='/bookings'>My Order</Link></li>
+                                <li className='font-semibold'><Link to='/wishlists'>Wish List</Link></li>
                             </>
 
 
                     }
+                    <li className='font-semibold'><Link to='/login'>Login</Link></li>
 
-
+                    {
+                        user?.email ?
+                            <li className='font-semibold' onClick={logOut}><Link>Sign Out</Link></li>
+                            :
+                            <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
+                    }
 
                 </>
 
         }
 
     </>
-
-
-
-
 
     return (
         <div className="navbar bg-base-100">

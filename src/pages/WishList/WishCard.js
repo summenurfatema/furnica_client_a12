@@ -15,10 +15,10 @@ const WishCard = ({ wish, handleDelete }) => {
                     </div>
                 </div>
             </td>
-            <td>{productName}</td>
-            <td>{productPrice} BDT</td>
+            <td className='font-semibold'>{productName}</td>
+            <td className='font-semibold'>{productPrice} BDT</td>
             <td className='space-x-2'>
-                <button className="btn btn-sm">Add</button>
+                <button className="btn btn-sm">Pay</button>
                 <button onClick={() => handleDelete(wish)} className="btn btn-sm">Delete</button>
             </td>
         </tr>

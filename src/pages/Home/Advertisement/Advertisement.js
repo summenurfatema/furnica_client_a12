@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../../context/UserContext';
-import useSeller from '../../hooks/useSeller';
+
 import BookingModal from '../../Modal/BookingModal';
 import AdvertisementCard from './AdvertisementCard';
 
 const Advertisement = () => {
-    const { user } = useContext(AuthContext)
-    const [isSeller] = useSeller(user?.email)
+
     const [ads, setAd] = useState([])
     const [adver, setAdver] = useState({})
     useEffect(() => {
@@ -46,12 +44,7 @@ const Advertisement = () => {
 
     return (
         <div className='my-10'>
-            {
-                isSeller ?
-                    <h1 className='text-2xl text-center font-semibold my-3 mb-10'> Your product's Advertisement is here...</h1>
-                    :
-                    <h1 className='text-2xl text-center font-semibold my-3 mb-10'>Here are the best collection of Furnica ...</h1>
-            }
+
 
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>

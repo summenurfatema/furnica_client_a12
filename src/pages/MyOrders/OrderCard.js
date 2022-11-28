@@ -21,12 +21,12 @@ const OrderCard = ({ booking, handleDelete }) => {
 
                     <tr>
 
-                        <td>{buyerName}</td>
-                        <td>{productName}</td>
-                        <td>{productPrice}</td>
-                        <td>{buyerPhone}</td>
-                        <td>{meetingLocation}</td>
-                        <td>
+                        <td className='font-semibold'>{buyerName}</td>
+                        <td className='font-semibold'>{productName}</td>
+                        <td className='font-semibold'>{productPrice}</td>
+                        <td className='font-semibold'>{buyerPhone}</td>
+                        <td className='font-semibold'>{meetingLocation}</td>
+                        <td >
                             <button onClick={() => handleDelete(booking)} className="btn btn-error">Delete</button>
                         </td>
 
