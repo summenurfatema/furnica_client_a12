@@ -7,6 +7,10 @@ import OrderCard from './OrderCard';
 const MyOrders = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
+
+
+
+
     useEffect(() => {
         fetch(`http://localhost:5000/bookings?email=${user?.email}`)
             .then(res => res.json())

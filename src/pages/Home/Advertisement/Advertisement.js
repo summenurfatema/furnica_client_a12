@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query'
 
 import BookingModal from '../../Modal/BookingModal';
 import AdvertisementCard from './AdvertisementCard';
