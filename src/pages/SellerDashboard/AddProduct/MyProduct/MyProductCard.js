@@ -25,7 +25,7 @@ const MyProductCard = ({ product, handleDelete, handleUpdate }) => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success(`You have added ${furniture} for ad !!`)
+                    toast.success(`You have added ${furniture} for advertisement !!`)
 
                 }
                 else {

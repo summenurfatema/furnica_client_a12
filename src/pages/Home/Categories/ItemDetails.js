@@ -28,7 +28,7 @@ const ItemDetails = ({ _id, product, setItem }) => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success(`You have added ${furniture} in your wishlistsuccessfully`)
+                    toast.success(`You have added ${furniture} in your wishlist successfully`)
                 }
                 else {
                     toast.danger('Error')
