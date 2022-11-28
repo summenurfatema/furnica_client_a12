@@ -37,7 +37,7 @@ const BookingModal = ({ item, adver }) => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success(`You have booked ${productName} successfully`)
+                    toast.success(`You have orderes ${productName} successfully`)
 
                 }
                 else {

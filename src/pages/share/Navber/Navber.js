@@ -18,6 +18,8 @@ const Navber = () => {
 
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
+        <li className='font-semibold'><Link to='/bookings'>My Order</Link></li>
+        <li className='font-semibold'><Link to='/wishlists'>Wish List</Link></li>
 
 
         {
@@ -32,19 +34,13 @@ const Navber = () => {
 
                 <>
                     {
-                        isSeller ?
-                            <>
-                                <li className='font-semibold'><Link to='/seller/addproduct'>Add Product</Link></li>
-                                <li className='font-semibold'><Link to='/seller/myproduct'>My Product</Link></li>
+                        isSeller &&
+                        <>
+                            <li className='font-semibold'><Link to='/seller/addproduct'>Add Product</Link></li>
+                            <li className='font-semibold'><Link to='/seller/myproduct'>My Product</Link></li>
 
-                            </>
+                        </>
 
-                            :
-
-                            <>
-                                <li className='font-semibold'><Link to='/bookings'>My Order</Link></li>
-                                <li className='font-semibold'><Link to='/wishlists'>Wish List</Link></li>
-                            </>
 
 
                     }
