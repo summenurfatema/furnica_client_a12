@@ -5,7 +5,7 @@ import ReportItemCard from './ReportItemCard';
 const ReportItem = () => {
     const [reportItems, setReportItems] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/reportitem')
+        fetch('https://furnica-server.vercel.app/reportitem')
             .then(res => res.json())
             .then(data => {
                 setReportItems(data)
@@ -16,7 +16,7 @@ const ReportItem = () => {
 
         const agree = window.confirm('Are you ready to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/reportitem/${reportItem._id}`, {
+            fetch(`https://furnica-server.vercel.app/reportitem/${reportItem._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

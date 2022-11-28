@@ -9,7 +9,8 @@ const Login = () => {
 
     useTitle('Login-Furnica')
 
-    const { signIn, user, google } = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider()
+    const { signIn, google } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/'
@@ -18,32 +19,23 @@ const Login = () => {
     const handleLogin = event => {
         event.preventDefault()
         const form = event.target
-        const name = user?.displayName
-
         const email = form.email.value
         const password = form.password.value
-
-
-
-
 
 
         signIn(email, password)
             .then(result => {
                 const user = result.user
+                console.log(user)
+                toast.success('Login successfull')
                 navigate(from, { replace: true })
-                toast.success('Login successfully')
+
                 form.reset('')
-
             })
-            .then(error => {
-
-                console.error(error)
-            })
+            .catch(error => console.error(error))
 
     }
 
-    const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
         google(googleProvider)
             .then(result => {

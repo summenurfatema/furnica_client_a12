@@ -7,15 +7,10 @@ import AdminHome from "../pages/Admin/AdminHome/AdminHome";
 import AllBuyer from "../pages/Admin/AllBuyer/AllBuyer";
 import AllUser from "../pages/Admin/AllUser/AllUser";
 import ReportItem from "../pages/Admin/ReportItem/ReportItem";
-import SellerSection from "../pages/Admin/SellerSection/SellerSection";
 import Blog from "../pages/Blog/Blog";
-
-
 import Error from "../pages/Error/Error";
 import MyAdvertise from "../pages/Home/Advertisement/MyAdvertise";
-
 import CategoryItems from "../pages/Home/Categories/CategoryItems";
-import ItemDetails from "../pages/Home/Categories/ItemDetails";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import MyOrders from "../pages/MyOrders/MyOrders";
@@ -57,7 +52,7 @@ const router = createBrowserRouter([
                 path: '/furnitures/:category',
                 element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
 
-                loader: ({ params }) => fetch(`http://localhost:5000/furnitures/${params.category}`)
+                loader: ({ params }) => fetch(`https://furnica-server.vercel.app/furnitures/${params.category}`)
             },
             {
                 path: '/wishlists',
@@ -72,25 +67,25 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/seller',
+        path: '/Seller',
         element: <SellerDashBoardLayout></SellerDashBoardLayout>,
         children: [
             {
-                path: '/seller',
+                path: '/Seller',
                 element: <SellerDashboard></SellerDashboard>
 
 
             },
             {
-                path: '/seller/addproduct',
+                path: '/Seller/addproduct',
                 element: <AddProduct></AddProduct>
             },
             {
-                path: '/seller/myproduct',
+                path: '/Seller/myproduct',
                 element: <MyProducts></MyProducts>
             },
             {
-                path: '/seller/advertise',
+                path: '/Seller/advertise',
                 element: <MyAdvertise></MyAdvertise>
             }
 
@@ -115,12 +110,12 @@ const router = createBrowserRouter([
             {
                 path: '/admin/:role',
                 element: <AdminDashBoard></AdminDashBoard>,
-                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.role}`)
+                loader: ({ params }) => fetch(`https://furnica-server.vercel.app/users/${params.role}`)
             },
             {
                 path: '/admin/users/:role',
                 element: <AllBuyer></AllBuyer>,
-                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.role}`)
+                loader: ({ params }) => fetch(`https://furnica-server.vercel.app/users/${params.role}`)
             },
 
             {

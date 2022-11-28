@@ -13,7 +13,7 @@ const MyOrders = () => {
     useTitle('My Orders-Furnica')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+        fetch(`https://furnica-server.vercel.app/bookings?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setBookings(data)
@@ -24,7 +24,7 @@ const MyOrders = () => {
 
         const agree = window.confirm('Are you ready to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/bookings/${booking._id}`, {
+            fetch(`https://furnica-server.vercel.app/bookings/${booking._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

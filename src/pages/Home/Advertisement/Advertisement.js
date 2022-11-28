@@ -10,7 +10,7 @@ const Advertisement = () => {
     const [ads, setAd] = useState([])
     const [adver, setAdver] = useState({})
     useEffect(() => {
-        fetch('http://localhost:5000/advertise')
+        fetch('https://furnica-server.vercel.app/advertise')
             .then(res => res.json())
             .then(data => {
                 setAd(data)
@@ -22,7 +22,7 @@ const Advertisement = () => {
     const handleDelete = (ad) => {
         const agree = window.confirm('Are you sure to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/advertise/${ad._id}`, {
+            fetch(`https://furnica-server.vercel.app/advertise/${ad._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

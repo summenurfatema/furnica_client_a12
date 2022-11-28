@@ -1,15 +1,15 @@
-import React, { useContext, useEffect } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
+import useSeller from '../../hooks/IsSeller/useSeller';
 import useAdmin from '../../hooks/useAdmin';
-import useSeller from '../../hooks/useSeller';
+
 import logo from '.././../../assets/images/logo.png'
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const [isAdmin] = useAdmin(user?.email)
-
     const [isSeller] = useSeller(user?.email)
 
 
@@ -36,8 +36,8 @@ const Navber = () => {
                     {
                         isSeller ?
                             <>
-                                <li className='font-semibold'><Link to='/seller/addproduct'>Add Product</Link></li>
-                                <li className='font-semibold'><Link to='/seller/myproduct'>My Product</Link></li>
+                                <li className='font-semibold'><Link to='/Seller/addproduct'>Add Product</Link></li>
+                                <li className='font-semibold'><Link to='/Seller/myproduct'>My Product</Link></li>
 
                             </>
                             :
@@ -47,13 +47,7 @@ const Navber = () => {
 
                             </>
 
-
-
                     }
-                    <li className='font-semibold'><Link to='/login'>Login</Link></li>
-
-
-
                 </>
 
         }
@@ -62,8 +56,14 @@ const Navber = () => {
             user?.email ?
                 <li className='font-semibold' onClick={logOut}><Link>Log Out</Link></li>
                 :
-                <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
+                <>
+                    <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
+
+                </>
         }
+        <li className='font-semibold'><Link to='/login'>Login</Link></li>
+
+
 
     </>
 

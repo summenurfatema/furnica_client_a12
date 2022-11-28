@@ -1,10 +1,13 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import SellerSection from '../SellerSection/SellerSection';
 
 const AdminDashBoard = () => {
     const sellers = useLoaderData()
+
+    useTitle('Seller-Furnica')
 
 
     // delete user
@@ -13,7 +16,7 @@ const AdminDashBoard = () => {
 
         const agree = window.confirm('Are you ready to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/admin/Seller/${seller._id}`, {
+            fetch(`https://furnica-server.vercel.app/admin/Seller/${seller._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -38,7 +41,7 @@ const AdminDashBoard = () => {
     // VERIFY SELLER
 
     const handleVerify = _id => {
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://furnica-server.vercel.app/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

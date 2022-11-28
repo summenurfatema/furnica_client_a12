@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBaxR9YqH2jXCc3-VVD_H1JXKU88dLUHCQ",
-    authDomain: "furnica-client.firebaseapp.com",
-    projectId: "furnica-client",
-    storageBucket: "furnica-client.appspot.com",
-    messagingSenderId: "161751465364",
-    appId: "1:161751465364:web:a7e591d810af857f7d2381"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomai,
+    projectId: process.env.REACT_APP_projectI,
+    storageBucket: process.env.REACT_APP_storageBucke,
+    messagingSenderId: process.env.REACT_APP_messagingSenderI,
+    appId: process.env.REACT_APP_appI
 };
 
 // Initialize Firebase

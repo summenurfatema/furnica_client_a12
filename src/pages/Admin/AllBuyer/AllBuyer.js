@@ -14,7 +14,7 @@ const AllBuyer = () => {
 
         const agree = window.confirm('Are you ready to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/admin/Buyer/${buyer._id}`, {
+            fetch(`https://furnica-server.vercel.app/admin/Buyer/${buyer._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

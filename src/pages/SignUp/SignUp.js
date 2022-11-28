@@ -43,10 +43,10 @@ const SignUp = () => {
                 toast.success('Account created successfully !!')
 
             })
-            .then(err => console.error(err))
+            .catch(err => console.error(err))
 
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://furnica-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

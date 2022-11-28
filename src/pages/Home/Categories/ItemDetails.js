@@ -18,7 +18,7 @@ const ItemDetails = ({ _id, product, setItem }) => {
             productName: furniture,
             productPrice: resale_price,
         }
-        fetch('http://localhost:5000/wishlists', {
+        fetch('https://furnica-server.vercel.app/wishlists', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const ItemDetails = ({ _id, product, setItem }) => {
             productName: furniture,
             productPrice: resale_price,
         }
-        fetch('http://localhost:5000/admin/reportitem', {
+        fetch('https://furnica-server.vercel.app/admin/reportitem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
-import useSeller from '../../hooks/useSeller';
+import useSeller from '../../hooks/IsSeller/useSeller';
+
 
 const AdvertisementCard = ({ ad, handleDelete, setAdver }) => {
     const { user } = useContext(AuthContext)
