@@ -83,11 +83,11 @@ const BookingModal = ({ item, adver }) => {
 
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Phone number :</label>
-                            <input name='phone' type="text" placeholder='01XXXXXXXXX' className="input input-bordered w-full max-w-xs block" />
+                            <input required name='phone' type="text" placeholder='01XXXXXXXXX' className="input input-bordered w-full max-w-xs block" />
                         </div>
                         <div className="form-control">
                             <label className='font-semibold text-lg'>Meeting Location :</label>
-                            <input name='location' type="text" className="input input-bordered w-full max-w-xs block" />
+                            <input required name='location' type="text" className="input input-bordered w-full max-w-xs block" />
                         </div>
                         <div className="modal-action">
                             <button type='submit' className='btn '>Confirm</button>

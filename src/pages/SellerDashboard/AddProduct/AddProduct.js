@@ -36,8 +36,6 @@ const AddProduct = () => {
             .then(imgData => {
                 if (imgData.success) {
 
-                    // {"_id":{"$oid":"637eeab662731c7edf8da4fb"},"furniture":"Single Bed","img":"https://t4.ftcdn.net/jpg/02/43/45/31/240_F_243453155_GHrzx32T0tRz1sGcsCfYOSuIPHSOEBkL.jpg","actual_price":{"$numberInt":"10000"},"resale_price":{"$numberInt":"7000"},"condition":"Good","description":".................. ","purchase_year":{"$numberInt":"2018"},"published_date":{"$date":{"$numberLong":"1642723200000"}},"location":"Fatikchori,Chittagong","availablity":"Sold","category":"bed","phone":{"$numberLong":"167895433"},"sellerName":"Md. Tuhin","email":"web@gmail.com"}
-
                     const addProduct = {
                         furniture: productName,
                         email,
@@ -69,7 +67,7 @@ const AddProduct = () => {
                         .then(data => {
                             console.log(data)
                             if (data.acknowledged) {
-                                toast.success(`You have booked ${productName} successfully`)
+                                toast.success(`You have added ${productName} successfully`)
 
                             }
                             else {
@@ -103,25 +101,25 @@ const AddProduct = () => {
 
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Phone :</label>
-                        <input name='phone' type="text" placeholder='01XXXXXXXXX' className="input input-bordered w-full max-w-xs block" />
+                        <input required name='phone' type="text" placeholder='01XXXXXXXXX' className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Location :</label>
-                        <input name='location' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='location' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
 
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Product Image :</label>
-                        <input name='productimg' type="file" accept='image/*' className="input input-bordered w-full max-w-xs block" />
+                        <input required name='productimg' type="file" accept='image/*' className="input input-bordered w-full max-w-xs block" />
                     </div>
 
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Product name :</label>
-                        <input name='productname' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='productname' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>About Product :</label>
-                        <input name='description' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='description' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -138,18 +136,18 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Actual Price :</label>
-                        <input name='actualprice' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='actualprice' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Resale Price :</label>
-                        <input name='resaleprice' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='resaleprice' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Condition</span>
                         </label>
                         <select name='condition' className="select select-bordered select-md w-full max-w-xs">
-                            <option>Exceillent</option>
+                            <option>Excellient</option>
                             <option>Good</option>
                             <option >Fair</option>
                         </select>
@@ -168,11 +166,11 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Purchase year :</label>
-                        <input name='parchaseyear' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='parchaseyear' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
                     <div className="form-control">
                         <label className='font-semibold text-lg'>Published date :</label>
-                        <input name='publisheddate' placeholder='YYYY-MM-DD' type="text" className="input input-bordered w-full max-w-xs block" />
+                        <input required name='publisheddate' placeholder='YYYY-MM-DD' type="text" className="input input-bordered w-full max-w-xs block" />
                     </div>
 
 
