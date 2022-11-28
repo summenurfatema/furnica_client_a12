@@ -4,6 +4,7 @@ import Main from "../layouts/Main/Main";
 import SellerDashBoardLayout from "../layouts/SellerDashBoardLayout";
 import AdminDashBoard from "../pages/Admin/AdminDashBoard/AdminDashBoard";
 import AdminHome from "../pages/Admin/AdminHome/AdminHome";
+import AllBuyer from "../pages/Admin/AllBuyer/AllBuyer";
 import AllUser from "../pages/Admin/AllUser/AllUser";
 import ReportItem from "../pages/Admin/ReportItem/ReportItem";
 import SellerSection from "../pages/Admin/SellerSection/SellerSection";
@@ -13,6 +14,7 @@ import Error from "../pages/Error/Error";
 import MyAdvertise from "../pages/Home/Advertisement/MyAdvertise";
 
 import CategoryItems from "../pages/Home/Categories/CategoryItems";
+import ItemDetails from "../pages/Home/Categories/ItemDetails";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import MyOrders from "../pages/MyOrders/MyOrders";
@@ -88,6 +90,7 @@ const router = createBrowserRouter([
             }
 
 
+
         ]
 
     },
@@ -107,12 +110,14 @@ const router = createBrowserRouter([
             {
                 path: '/admin/:role',
                 element: <AdminDashBoard></AdminDashBoard>,
-                loader: ({ params }) => fetch(`http://localhost:5000/admin/${params.role}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.role}`)
             },
             {
-                path: '/admin/sellersection',
-                element: <SellerSection></SellerSection>
+                path: '/admin/users/:role',
+                element: <AllBuyer></AllBuyer>,
+                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.role}`)
             },
+
             {
                 path: '/admin/dashboard',
                 element: <AllUser></AllUser>
@@ -121,6 +126,7 @@ const router = createBrowserRouter([
                 path: '/admin/reportitem',
                 element: <ReportItem></ReportItem>
             }
+
         ]
     }
 

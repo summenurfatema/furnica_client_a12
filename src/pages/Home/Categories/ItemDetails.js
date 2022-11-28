@@ -1,12 +1,13 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FaRegThumbsDown, FaRegHeart } from 'react-icons/fa'
+import { useLoaderData } from 'react-router-dom';
 
 
 const ItemDetails = ({ _id, product, setItem }) => {
     const { img, actual_price, availablity, condition,
         description, furniture, location, published_date, resale_price,
-        sellerName, phone } = product;
+        sellerName, phone, email } = product;
 
 
 
@@ -82,10 +83,8 @@ const ItemDetails = ({ _id, product, setItem }) => {
                     </ul>
                     <p className='font-bold text-xl'>Seller Information :</p>
                     <ul>
-
-
                         <li>Seller name :{sellerName}</li>
-                        {product?.verification && <p>k</p>}
+                        <li>Email :{email}</li>
                         <li>Phone :{phone}</li>
                         <li>Location : {location}</li>
 

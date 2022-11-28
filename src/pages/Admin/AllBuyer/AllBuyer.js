@@ -1,32 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
-import AllUserCard from './AllUserCard';
+import { useLoaderData } from 'react-router-dom';
+import SellerSection from '../SellerSection/SellerSection';
+import AllBuyerCard from './AllBuyerCard';
 
-const AllUser = () => {
-    const [users, setUsers] = useState([])
-
-
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => {
-                setUsers(data)
-
-            })
-    }, [users])
+const AllBuyer = () => {
+    const buyers = useLoaderData()
 
 
-    const handleDelete = (user) => {
+    // delete user
 
-        const agree = window.confirm('Are you confirm to delete ?')
+    const handleDelete = (buyer) => {
+
+        const agree = window.confirm('Are you ready to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/admin/users/${user._id}`, {
+            fetch(`http://localhost:5000/admin/Buyer/${buyer._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast('This user has been deleted !',
+                        toast('Buyer has been deleted !',
                             {
 
                                 style: {
@@ -42,6 +36,7 @@ const AllUser = () => {
         }
 
     }
+
     return (
         <div className='flex flex-col items-center'>
             <div className="overflow-x-auto">
@@ -52,16 +47,16 @@ const AllUser = () => {
 
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            users.map(user => <AllUserCard
-                                key={user._id}
-                                user={user}
-                                handleDelete={handleDelete}></AllUserCard>)
+                            buyers.map(buyer => <AllBuyerCard
+                                key={buyer._id}
+                                buyer={buyer}
+                                handleDelete={handleDelete}
+                            ></AllBuyerCard>)
                         }
                     </tbody>
                 </table>
@@ -70,4 +65,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default AllBuyer;

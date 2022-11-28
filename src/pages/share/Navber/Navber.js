@@ -26,7 +26,8 @@ const Navber = () => {
             isAdmin ?
                 <>
                     <li className='font-semibold'><Link to='/admin/dashboard'>Dashboard</Link></li>
-                    <li className='font-semibold'><Link to='/admin/Seller'>All Seller</Link></li>
+                    <li className='font-semibold'><Link to='/admin/users/Seller'>All Seller</Link></li>
+                    <li className='font-semibold'><Link to='/admin/users/Buyer'>All Buyer</Link></li>
                     <li className='font-semibold'><Link to='/admin/reportitem'>Reported Item</Link></li>
                 </>
 
