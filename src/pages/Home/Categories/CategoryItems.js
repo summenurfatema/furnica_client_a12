@@ -11,7 +11,7 @@ const CategoryItems = () => {
     const [item, setItem] = useState({})
 
     return (<div>
-        <div className='grid grid-cols-1 gap-5'>
+        <div className='grid grid-cols-1 gap-5 bg-gray-200'>
 
 
             {

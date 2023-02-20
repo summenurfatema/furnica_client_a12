@@ -8,7 +8,7 @@ const AllUserCard = ({ user, handleDelete }) => {
             <td className='font-semibold'>{email}</td>
             <td className='font-semibold'>{role}</td>
             <td>
-                <button onClick={() => handleDelete(user)} className="btn btn-error">Remove</button>
+                <button onClick={() => handleDelete(user)} className="btn btn-sm bg-red-600">Remove</button>
             </td>
         </tr>
     );

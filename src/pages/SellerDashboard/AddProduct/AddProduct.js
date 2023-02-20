@@ -4,7 +4,7 @@ import { AuthContext } from '../../../context/UserContext';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext)
-    const imgBbKey = process.env.REACT_APP_imgbb_key
+    const imgBbKey = "f375a7d7cbf6443df6506145faff4414"
 
     const handleBooking = event => {
         event.preventDefault()
@@ -82,7 +82,7 @@ const AddProduct = () => {
 
     return (
 
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center my-10">
 
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 px-5">
 
@@ -176,7 +176,7 @@ const AddProduct = () => {
 
 
 
-                    <button type='submit' className='btn '>Submit</button>
+                    <button type='submit' className='btn w-full bg-cyan-600'>Submit</button>
 
 
 

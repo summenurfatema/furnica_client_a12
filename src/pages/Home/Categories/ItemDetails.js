@@ -63,9 +63,9 @@ const ItemDetails = ({ _id, product, setItem }) => {
             .catch(err => console.error(err))
     }
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center mt-7'>
             <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src={img} alt="Album" className='w-[500px]' /></figure>
+                <figure><img src={img} alt="Album" className='w-[500px] pl-5' /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-xl">{furniture}</h2>
                     <p hidden>{_id}</p>
@@ -99,11 +99,11 @@ const ItemDetails = ({ _id, product, setItem }) => {
 
 
                         {availablity === 'Unsold' ?
-                            <label onClick={() => setItem(product)} htmlFor="my-modal-3" className="btn bg-green-700 mt-4">Order Now !</label>
+                            <label onClick={() => setItem(product)} htmlFor="my-modal-3" className="btn bg-[#0891b2] mt-4">Order Now !</label>
 
                             :
 
-                            <label className="btn bg-green-700 mt-4">Sold out</label>
+                            <label className="btn bg-[#0891b2] mt-4">Sold out</label>
 
                         }
 

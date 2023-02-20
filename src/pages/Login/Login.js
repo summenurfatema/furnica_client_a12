@@ -1,15 +1,16 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useRoutes } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 import useTitle from '../hooks/useTitle';
 
 const Login = () => {
 
     useTitle('Login-Furnica')
+    
 
-    const googleProvider = new GoogleAuthProvider()
+   
     const { signIn, google } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
@@ -36,10 +37,12 @@ const Login = () => {
 
     }
 
+    const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
         google(googleProvider)
             .then(result => {
                 const user = result.user
+                navigate('/')
                 console.log(user)
             })
             .catch(error => console.log(error))

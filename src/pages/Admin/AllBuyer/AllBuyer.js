@@ -1,7 +1,6 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
-import SellerSection from '../SellerSection/SellerSection';
 import AllBuyerCard from './AllBuyerCard';
 
 const AllBuyer = () => {

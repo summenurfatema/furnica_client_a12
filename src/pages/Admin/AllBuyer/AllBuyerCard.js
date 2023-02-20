@@ -10,7 +10,7 @@ const AllBuyerCard = ({ buyer, handleDelete }) => {
             <td>{displayName}</td>
             <td>{email}</td>
             <td>
-                <button onClick={() => handleDelete(buyer)} className="btn btn-error">Delete</button>
+                <button onClick={() => handleDelete(buyer)} className="btn btn-sm bg-red-600">Delete</button>
             </td>
         </tr>
     );

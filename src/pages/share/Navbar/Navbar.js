@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/UserContext';
 import useSeller from '../../hooks/IsSeller/useSeller';
 import useAdmin from '../../hooks/useAdmin';
 
 import logo from '.././../../assets/images/logo.png'
 
-const Navber = () => {
+const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogOut = () => {
+      logOut().then(() => {
+        navigate("/login");
+      });
+    };
+
 
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
@@ -24,7 +31,7 @@ const Navber = () => {
         {
             isAdmin ?
                 <>
-                    <li className='font-semibold'><Link to='/admin/dashboard'>Dashboard</Link></li>
+                    {/* <li className='font-semibold'><Link to='/admin/dashboard'>Dashboard</Link></li> */}
                     <li className='font-semibold'><Link to='/admin/users/Seller'>All Seller</Link></li>
                     <li className='font-semibold'><Link to='/admin/users/Buyer'>All Buyer</Link></li>
                     <li className='font-semibold'><Link to='/admin/reportitem'>Reported Item</Link></li>
@@ -54,27 +61,28 @@ const Navber = () => {
 
         {
             user?.email ?
-                <li className='font-semibold' onClick={logOut}><Link>Log Out</Link></li>
+                <li className='font-semibold bg-[#0891b2] text-white text-xl rounded-lg' onClick={handleLogOut}><Link>Log Out</Link></li>
                 :
                 <>
-                    <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
-
+                    
+                    <li className='font-semibold '><Link to='/login'>Login</Link></li>
+                    <li className='font-semibold bg-[#0891b2] text-white text-xl rounded-lg'><Link to='/signup'>Sign Up</Link></li>
                 </>
         }
-        <li className='font-semibold'><Link to='/login'>Login</Link></li>
+       
 
 
 
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 z-50 bg-white w-[300px] text-centertext-center">
                         {menuList}
                     </ul>
                 </div>
@@ -96,4 +104,4 @@ const Navber = () => {
     );
 };
 
-export default Navber;
+export default Navbar;

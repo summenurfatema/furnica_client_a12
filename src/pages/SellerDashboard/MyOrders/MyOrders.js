@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { saveSettings, settings } from 'react-hot-toast'
-import { AuthContext } from '../../context/UserContext';
-import useTitle from '../hooks/useTitle';
+import { AuthContext } from '../../../context/UserContext';
+import useTitle from '../../hooks/useTitle';
 import OrderCard from './OrderCard';
 
 const MyOrders = () => {
@@ -49,15 +49,47 @@ const MyOrders = () => {
 
 
     return (
-        <div>
+        <div className="overflow-x-auto py-10">
+        <table className="table w-full">
+    
+                    <thead className='w-full'>
+                        <tr className='w-full'>
+                            <th className='w-1/6'>Name</th>
+                            <th className='w-1/6'>Product Name</th>
+                            <th className='w-1/6'>Product Price</th>
+                            <th className='w-1/6'>Phone</th>
+                            <th className='w-1/6'>Meeting location</th>
+                            <th className='w-1/6'>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                       
+
             {
                 bookings &&
-                bookings.map((booking, i) => <OrderCard
-                    key={booking.i}
-                    booking={booking}
-                    handleDelete={handleDelete}></OrderCard>)
-            }
-        </div>
+
+                
+                bookings.map((booking, i) =>
+                <tr>
+                <td >{booking.buyerName}</td>
+                <td >{booking?.productName}</td>
+                <td >{booking?.productPrice}</td>
+                <td >{booking?.buyerPhone}</td>
+                <td >{booking?.meetingLocation}</td>
+                <td >
+                    <button onClick={()=>handleDelete(booking)} className="btn bg-red-600 text-white btn-sm">Delete</button>
+                </td>
+                    
+                    
+                    </tr>       
+                 
+                 ) }
+            
+            </tbody>
+               </table>
+               </div>
+        
     );
 };
 

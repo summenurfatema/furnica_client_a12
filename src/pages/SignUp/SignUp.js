@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast'
 import { AuthContext } from '../../context/UserContext';
 import useTitle from '../hooks/useTitle';
 
 const SignUp = () => {
     useTitle('Sign up-Furnica')
-
+    const navigate = useNavigate()
     const { createUser, updateUser } = useContext(AuthContext)
 
     const handleSignup = event => {
@@ -37,7 +37,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-
+navigate('/login')
                     })
                     .catch(error => console.error(error))
                 toast.success('Account created successfully !!')
@@ -100,7 +100,7 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign Up</button>
+                            <button className="btn w-full bg-cyan-600">Sign Up</button>
                         </div>
                         <p>Already have an account ? <Link to='/login'>Login here !!</Link></p>
                     </form>

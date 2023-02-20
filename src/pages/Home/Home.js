@@ -1,16 +1,18 @@
 import React from 'react';
 import Advertisement from './Advertisement/Advertisement';
 import Review from './Advertisement/Review';
-import Banner from './Banner/Banner';
+import BannerSlider from './Banner/BannerSlider';
 import Categories from './Categories/Categories';
+import Offer from './Offer';
+import State from './State';
 
 
 const Home = () => {
     return (
         <div>
-            <div className='flex flex-col items-center justify-around md:flex-row'>
+            <div className='flex flex-col items-center justify-around md:flex-row md:items-center z-0'>
                 <div className=''>
-                    <Banner></Banner>
+                    <BannerSlider></BannerSlider>
                 </div >
                 <div>
                     <Categories ></Categories>
@@ -18,6 +20,8 @@ const Home = () => {
             </div>
 
             <Advertisement></Advertisement>
+            <State/>
+            <Offer/>
             <Review></Review>
         </div>
     );

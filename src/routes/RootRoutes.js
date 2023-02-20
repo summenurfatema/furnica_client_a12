@@ -2,18 +2,15 @@ import { createBrowserRouter } from "react-router-dom";
 import AdminDashBoardLayout from "../layouts/AdminDashBoardLayout";
 import Main from "../layouts/Main/Main";
 import SellerDashBoardLayout from "../layouts/SellerDashBoardLayout";
-import AdminDashBoard from "../pages/Admin/AdminDashBoard/AdminDashBoard";
-import AdminHome from "../pages/Admin/AdminHome/AdminHome";
 import AllBuyer from "../pages/Admin/AllBuyer/AllBuyer";
 import AllUser from "../pages/Admin/AllUser/AllUser";
 import ReportItem from "../pages/Admin/ReportItem/ReportItem";
 import Blog from "../pages/Blog/Blog";
 import Error from "../pages/Error/Error";
-import MyAdvertise from "../pages/Home/Advertisement/MyAdvertise";
 import CategoryItems from "../pages/Home/Categories/CategoryItems";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
-import MyOrders from "../pages/MyOrders/MyOrders";
+import MyOrders from "../pages/SellerDashboard/MyOrders/MyOrders";
 import AddProduct from "../pages/SellerDashboard/AddProduct/AddProduct";
 import MyProducts from "../pages/SellerDashboard/AddProduct/MyProduct/MyProducts";
 import SellerDashboard from "../pages/SellerDashboard/SellerDashboard";
@@ -84,10 +81,7 @@ const router = createBrowserRouter([
                 path: '/Seller/myproduct',
                 element: <MyProducts></MyProducts>
             },
-            {
-                path: '/Seller/advertise',
-                element: <MyAdvertise></MyAdvertise>
-            }
+          
 
 
 
@@ -103,15 +97,8 @@ const router = createBrowserRouter([
         path: '/admin',
         element: <AdminDashBoardLayout></AdminDashBoardLayout>,
         children: [
-            {
-                path: '/admin',
-                element: <AdminHome></AdminHome>
-            },
-            {
-                path: '/admin/:role',
-                element: <AdminDashBoard></AdminDashBoard>,
-                loader: ({ params }) => fetch(`https://furnica-server.vercel.app/users/${params.role}`)
-            },
+           
+            
             {
                 path: '/admin/users/:role',
                 element: <AllBuyer></AllBuyer>,

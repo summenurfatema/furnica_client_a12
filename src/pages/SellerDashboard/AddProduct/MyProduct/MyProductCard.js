@@ -10,6 +10,8 @@ const MyProductCard = ({ product, handleDelete, handleUpdate }) => {
             eamil,
             image: img,
             productName: furniture,
+            availablity:"Unsold"
+
 
 
         }
@@ -52,12 +54,12 @@ const MyProductCard = ({ product, handleDelete, handleUpdate }) => {
             <td className='text-xl font-bold'>{furniture}</td>
             <td className='space-x-2'>
                 {product?.availablity !== 'Sold' &&
-                    <button onClick={() => handleUpdate(product._id)} className="btn btn-success">Mark as Sold</button>
+                    <button onClick={() => handleUpdate(product._id)} className="btn btn-sm bg-cyan-600">Mark as Sold</button>
                 }
                 {product.availablity !== 'Sold' &&
-                    <button onClick={handleAd} className="btn btn-warning">Advertisement</button>
+                    <button onClick={handleAd} className="btn btn-sm bg-cyan-600">Advertisement</button>
                 }
-                <button onClick={() => handleDelete(product)} className="btn btn-error">Delete</button>
+                <button onClick={() => handleDelete(product)} className="btn btn-sm bg-cyan-600">Delete</button>
             </td>
         </tr>
     );
