@@ -46,7 +46,7 @@ navigate('/login')
             .catch(err => console.error(err))
 
 
-        fetch('https://furnica-server.vercel.app/users', {
+        fetch('https://furnica-server.onrender.com/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

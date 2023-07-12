@@ -7,7 +7,7 @@ const AllUser = () => {
 
 
     useEffect(() => {
-        fetch('https://furnica-server.vercel.app/users')
+        fetch('https://furnica-server.onrender.com/users')
             .then(res => res.json())
             .then(data => {
                 setUsers(data)
@@ -20,7 +20,7 @@ const AllUser = () => {
 
         const agree = window.confirm('Are you confirm to delete ?')
         if (agree) {
-            fetch(`https://furnica-server.vercel.app/admin/users/${user._id}`, {
+            fetch(`https://furnica-server.onrender.com/admin/users/${user._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

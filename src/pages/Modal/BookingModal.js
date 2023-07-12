@@ -26,7 +26,7 @@ const BookingModal = ({ item, adver }) => {
         }
 
         console.log(booking)
-        fetch('https://furnica-server.vercel.app/bookings', {
+        fetch('https://furnica-server.onrender.com/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

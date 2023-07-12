@@ -49,7 +49,7 @@ const router = createBrowserRouter([
                 path: '/furnitures/:category',
                 element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
 
-                loader: ({ params }) => fetch(`https://furnica-server.vercel.app/furnitures/${params.category}`)
+                loader: ({ params }) => fetch(`https://furnica-server.onrender.com/furnitures/${params.category}`)
             },
             {
                 path: '/wishlists',
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
             {
                 path: '/admin/users/:role',
                 element: <AllBuyer></AllBuyer>,
-                loader: ({ params }) => fetch(`https://furnica-server.vercel.app/users/${params.role}`)
+                loader: ({ params }) => fetch(`https://furnica-server.onrender.com/users/${params.role}`)
             },
 
             {

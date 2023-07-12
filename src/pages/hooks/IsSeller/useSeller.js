@@ -7,7 +7,7 @@ const useSeller = email => {
     useEffect(() => {
         if (email) {
 
-            fetch(`https://furnica-server.vercel.app/users1/${email}`)
+            fetch(`https://furnica-server.onrender.com/users1/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)

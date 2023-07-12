@@ -6,7 +6,7 @@ const useAdmin = email => {
     useEffect(() => {
         if (email) {
 
-            fetch(`https://furnica-server.vercel.app/users/admin/${email}`)
+            fetch(`https://furnica-server.onrender.com/users/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data.isAdmin)

@@ -56,7 +56,7 @@ const AddProduct = () => {
                     console.log(addProduct)
 
                     console.log(addProduct)
-                    fetch('https://furnica-server.vercel.app/furnitures', {
+                    fetch('https://furnica-server.onrender.com/furnitures', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

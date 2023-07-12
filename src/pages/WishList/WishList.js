@@ -9,7 +9,7 @@ const WishList = () => {
 
     const [wishes, setWishes] = useState([])
     useEffect(() => {
-        fetch('https://furnica-server.vercel.app/wishlists')
+        fetch('https://furnica-server.onrender.com/wishlists')
             .then(res => res.json())
             .then(data => {
                 setWishes(data)
@@ -20,7 +20,7 @@ const WishList = () => {
 
         const agree = window.confirm('Are you ready to delete ?')
         if (agree) {
-            fetch(`https://furnica-server.vercel.app/wishlists/${wish._id}`, {
+            fetch(`https://furnica-server.onrender.com/wishlists/${wish._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

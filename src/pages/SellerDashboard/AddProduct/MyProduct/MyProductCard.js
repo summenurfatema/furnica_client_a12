@@ -16,7 +16,7 @@ const MyProductCard = ({ product, handleDelete, handleUpdate }) => {
 
         }
 
-        fetch('https://furnica-server.vercel.app/advertise', {
+        fetch('https://furnica-server.onrender.com/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -18,7 +18,7 @@ const ItemDetails = ({ _id, product, setItem }) => {
             productName: furniture,
             productPrice: resale_price,
         }
-        fetch('https://furnica-server.vercel.app/wishlists', {
+        fetch('https://furnica-server.onrender.com/wishlists', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const ItemDetails = ({ _id, product, setItem }) => {
             productName: furniture,
             productPrice: resale_price,
         }
-        fetch('https://furnica-server.vercel.app/admin/reportitem', {
+        fetch('https://furnica-server.onrender.com/admin/reportitem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch(`https://furnica-server.vercel.app/furnitures?email=${user?.email}`)
+        fetch(`https://furnica-server.onrender.com/furnitures?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -19,7 +19,7 @@ const MyProducts = () => {
     const handleDelete = (product) => {
         const agree = window.confirm('Are you sure to delete ?')
         if (agree) {
-            fetch(`https://furnica-server.vercel.app/furnitures/${product._id}`, {
+            fetch(`https://furnica-server.onrender.com/furnitures/${product._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -41,7 +41,7 @@ const MyProducts = () => {
     }
     //mark it sold
     const handleUpdate = _id =>
-        fetch(`https://furnica-server.vercel.app/furnitures/${_id}`, {
+        fetch(`https://furnica-server.onrender.com/furnitures/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
