@@ -1,6 +1,6 @@
 # Furnica.. a website which help you sell/buy second hand furnitures.
 
-## Livesite : https://loquacious-cat-77bb39.netlify.ap
+## Livesite : https://loquacious-cat-77bb39.netlify.app
 
 - ## In this website I have used DaisyUI library.
  - ## to buy / sell you have to sign up & login first.
