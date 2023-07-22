@@ -2,7 +2,7 @@
 
 ## Livesite : https://loquacious-cat-77bb39.netlify.app
 
-- ## In this website I have used DaisyUI library.
+- ## In this website I have used DaisyUI 
  - ## to buy / sell you have to sign up & login first.
  - ## You can add your favourite item to wish list and can report also.
  - ## From Advertisement section you can order product directly 
